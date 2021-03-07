@@ -1,0 +1,246 @@
+.container-classe {
+  margin: 20px 40px;
+}
+
+.classe-title {
+  display: flex;
+}
+
+.classe-name {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.classe-icon {
+  color: #babdbe;
+  margin-right: 10px;
+}
+
+.classe-promo {
+  margin-left: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 100px;
+  background-color: #b9b9b9;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 36.400px;
+}
+
+.container-info {
+  margin: 20px 40px;
+  display: flex;
+}
+
+.container-info>div {
+  width: 33%;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.container-info>div:first-of-type {
+  padding-right: 20px;
+  border-right: 1px solid #d7dbdb;
+}
+.container-info>div:nth-of-type(2) {
+  padding-right: 20px;
+  padding-left: 20px;
+  border-right: 1px solid #d7dbdb;
+}
+.container-info>div:last-of-type {
+  padding-right: 20px;
+  padding-left: 20px;
+}
+
+hr {
+  margin: 20px 40px;
+  background-color: #e8e9e9;
+  border: none;
+  height: 3px;
+}
+
+.course {
+  margin-bottom: 5px;
+  border: 1px solid #d7dbdb;
+  border-radius: 3px;
+  display: flex;
+}
+
+.course>div {
+  padding: 5px;
+}
+
+.course>div:first-of-type {
+  background: #f4f6f6;
+}
+.course>div:last-of-type {
+  align-self: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.avatar {
+  margin: 5px;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+}
+
+.course>div:nth-of-type(2)>div:first-of-type {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.list-badge span{
+  background: 0 0;
+  border: 1px solid #d7dbdb;
+  line-height: 18px;
+  font-size: 13px;
+  padding: 2px 9px;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+.labels {
+  color: #464c4f;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.no-assignments {
+  background-color: #eeeeee;
+  color: #464c4f;
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-header {
+  display: flex;
+}
+.section-header>div:last-of-type {
+  align-self: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.add-icon {
+  color: #158242 ;
+  margin-right: 5px;
+}
+
+.add-icon:hover {
+  color: #13aa52;
+}
+
+.assignment {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border: 1px solid #d7dbdb;
+  border-radius: 3px;
+}
+
+.assignment>div:first-of-type>div:first-of-type {
+  margin-bottom: 8px;
+}
+.assignment>div:first-of-type>div:first-of-type>span:first-of-type {
+  font-size: 16px;
+  font-weight: 500;
+  margin-right: 10px;
+
+}
+
+.assignment>div:first-of-type>div:first-of-type>span:last-of-type {
+  font-size: 14px;
+  background-color: #c9dbe4;
+  color: #5a869c;
+  display: inline-block;
+  line-height: 20px;
+  cursor: default;
+  font-size: 12px;
+  padding: 2px 10px;
+  border-radius: 11px;
+  white-space: nowrap;
+}
+
+.redEffect {
+  background-color: #f18d8d !important;
+}
+
+.etudiant {
+  padding: 5px 10px;
+  margin-bottom: 5px;
+  border: 1px solid #d7dbdb;
+  border-radius: 3px;
+}
+
+.rendre {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #13aa52;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.rendre:hover {
+  background-color: #0e8f43;
+}
+
+.enlever {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #a32c24;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+.enlever:hover {
+  background-color: #992921;
+}
+
+.mailto {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #5a869c;
+  border-radius: 8px;
+}
+
+.mailto:hover {
+  text-decoration: none;
+  background-color: #50788b;
+}
+
+.etudiant>div {
+  margin-bottom: 10px;
+}
+
+.classe-icon {
+  cursor: pointer;
+}
+
+.assignment {
+  display: flex;
+}
+.assignment>div:first-of-type {
+  flex-grow: 1;
+}
+.assignment>div:last-of-type {
+  align-self: center;
+}
+

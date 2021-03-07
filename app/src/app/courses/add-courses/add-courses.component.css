@@ -1,0 +1,108 @@
+
+.container-header {
+  margin-left: 26px;
+}
+
+.container-header label:first-child {
+  margin-right: 10px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.container-header label:last-child {
+  font-size: 18px;
+  color: #464c4f;
+}
+
+.form-inline {
+  margin-left: 25px;
+}
+
+#btnUpload {
+  margin-left: 15px;
+}
+
+
+.addedcourses-container{
+  display: flex;
+  flex-flow: row wrap;
+}
+.avatar  {
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  background-position: top center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.addedCourse {
+  margin: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background-color: #f4f6f6;
+  border: 1px solid #d7dbdb;
+  width: 24%;
+  position: relative;
+  height: 160px;
+}
+
+.addedCourse div:first-child {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.addedCourse-info div:first-child {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(17, 97, 73);
+}
+
+
+.delete-div {
+  position: absolute;
+  bottom: 0;
+  right:0;
+  margin: 15px;
+}
+
+.delete-div span {
+  cursor: pointer;
+  display: block;
+  padding: 5px 8px;
+  border-radius: 8px;
+  color: white;
+  background-color: #b93d34;
+}
+
+.delete-div span:hover {
+  background-color: #8F221B;
+}
+
+.btn {
+  border-radius: 8px !important;
+}
+
+label {
+  font-weight: 500;
+}
+.form-inline {
+  margin-bottom: 26px !important;
+}
+
+.subtitle-courses {
+  margin: 6px;
+  font-size: 22px;
+  color: rgb(59, 59, 59);
+  font-weight: 500;
+}
+
+hr {
+  height:1px;
+  border-width:0;
+  width:95%;
+  color:#d7dbdb;
+  background-color:#d7dbdb;
+}
+

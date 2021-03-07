@@ -1,0 +1,153 @@
+<div *ngIf="classe != null">
+<div class="container-classe" >
+  <div class="classe-title">
+    <div class="classe-name"><fa-icon class="classe-icon" [icon]="faGraduationCap"></fa-icon> {{classe.name | uppercase }} </div>
+    <div class="classe-promo">{{classe.promo}}</div>
+  </div>
+</div>
+
+<hr>
+
+<div class="container-info">
+  <div>
+    <div class="labels">
+      COURS:
+    </div>
+    <div *ngFor = "let course of courses" class="course">
+      <div>
+        <div  style="background-image: url('http://localhost:8010/static/{{course.avatar}}');" class="avatar"></div>
+      </div>
+      <div>
+        <div>{{course.name}}</div>
+        <div class="list-badge">
+          <span>Proffeseur : {{course.professeur}}</span>
+          <span>{{course.semestre}}</span>
+        </div>
+      </div>
+      <div>
+        <div (click)="selectCourse(course)"><fa-icon class="classe-icon" [icon]="faChevronRight" ></fa-icon></div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="section-header">
+      <div class="labels">DEVOIRS:</div>
+      <div>
+        <span (click)="open(content)"><fa-icon class="add-icon" [icon]="faPlus"></fa-icon></span>
+      </div>
+    </div>
+    <div *ngIf="!assignementsExist()" class="no-assignments">
+      <div *ngIf="selectedCourse != null">Le cours <b>{{selectedCourse.name}}</b> ne contient aucun devoir</div>
+      <div *ngIf="selectedCourse == null">Aucun cours trouvé</div>
+    </div>
+    <div class="assignments" *ngIf="assignementsExist()">
+      <div *ngFor="let assignementA of selectedCourse.assignments; let index = index;" class="assignment">
+        <div>
+          <div>
+            <span>{{assignementA.nom}}</span>
+            <span>{{assignementA.typeA | uppercase}}</span>
+          </div>
+          <div class="list-badge">
+            <span [class.redEffect] = "betweenDates(assignementA.dateDeRendu) <= 7 ">Date de rendu: {{assignementA.dateDeRendu | date:"dd/MM/yyyy"}}</span>
+          </div>
+          <div style="margin: 10px 0px;">
+            <span class="enlever" (click) = "deleteAssignment(index)">Supprimer</span>
+            <span class="mailto"(click) = "assignement = assignementA; open(content)" >Editer</span>
+          </div>
+        </div>
+        <div>
+          <div (click)="selectAssignment(index)"><fa-icon class="classe-icon" [icon]="faChevronRight" ></fa-icon></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div >
+      <span class="labels">ETUDIANTS:</span>
+    </div>
+    <div *ngIf="!assignementsExist()" class="no-assignments">
+      <div *ngIf="selectedCourse != null">Le cours <b>{{selectedCourse.name}}</b> ne contient aucun devoir</div>
+      <div *ngIf="selectedCourse == null">Aucun cours trouvé</div>
+    </div>
+    <div class="etudiants" *ngIf="assignementsExist()">
+      <div *ngFor="let etudiant of selectedCourse.assignments[indexSelectedAssignement].etudiants; let index = index;" class="etudiant">
+        <div><b>{{etudiant.lastName}} </b> <span>{{etudiant.firstName}} </span></div>
+        <div>Note : {{etudiant.note ? etudiant.note : "/"}}</div>
+        <div>
+          <span (click)="rendu(index, indexSelectedAssignement, true, note)" *ngIf="!etudiant.rendu" class="rendre">Rendre</span>
+          <span (click)="rendu(index, indexSelectedAssignement, false, null)" *ngIf="etudiant.rendu && etudiant.rendu == true" class="enlever">Enlever</span>
+          <a href="mailto:{{etudiant.email}}" class="mailto">Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ajouter un devoir</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <input id="prodId" name="_id" type="hidden" value="{{assignement._id}}"  [(ngModel)]="assignement._id">
+      <div class="form-group">
+        <label for="nom">Libellé</label>
+        <div class="input-group">
+          <input class="form-control" type="text" id="nom" name="nom" placeholder="Projet Angular" [(ngModel)] = "assignement.nom">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <div class="input-group">
+          <select class="form-select form-control" id="type" name="type" [(ngModel)] = "assignement.typeA">
+            <option value="projet" selected>Projet</option>
+            <option value="presentation">Présentation</option>
+            <option value="rapport">Rapport</option>
+            <option value="tp">Tp</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dp">Date de Rendu</label>
+        <div class="input-group">
+          <input type="text" id="dp" [(ngModel)]="assignement.dateDeRendu" class="form-control" required placeholder="yyyy-mm-dd" name="dateDeRendu" ngbDatepicker #dp="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()" type="button"><fa-icon [icon]="faCalendar"></fa-icon></button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="modal.close('Save')">Enregistrer</button>
+  </div>
+</ng-template>
+
+
+<ng-template #note let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Noter le devoir</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="nom">Note</label>
+        <div class="input-group">
+          <input class="form-control" type="number" step="0.01" placeholder="20" name="notePassed" [(ngModel)] = "notePassed">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-success" (click)="modal.close('Save')">Enregistrer</button>
+  </div>
+</ng-template>
+</div>

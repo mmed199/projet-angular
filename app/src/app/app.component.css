@@ -1,0 +1,29 @@
+@import url(https://fonts.googleapis.com/css?family=Fjalla+One);
+
+#navbar {
+  margin-bottom: 35px;
+}
+
+#navbar ul {
+	margin: 0;
+	padding: 18px;
+	list-style-type: none;
+	text-align: center;
+	background-color: #81c784;
+}
+
+#navbar ul li {
+	display: inline;
+	}
+
+#navbar ul li a {
+	text-decoration: none;
+	padding: .5em 1em;
+	color: #fff;
+	background-color: #81c784;
+}
+
+#navbar ul li a:hover {
+  border-radius: 8px;
+	background-color: #519657;
+}

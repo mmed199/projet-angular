@@ -1,0 +1,67 @@
+
+<div *ngIf="classe == null">
+  <div class="container-header">
+    <label>Vous devez ajoutez une classe en premier!</label>
+  </div>
+</div>
+
+<div *ngIf="classe != null">
+  <div class="container-header">
+    <label>Ajouter des cours à la classe {{classe.name}}</label>
+    <label>{{newClasse?  "(étape 2 sur 2)" : "" }}</label>
+  </div>
+
+
+  <form class="form-inline mt-4">
+      <div class="form-group mr-3">
+        <label class="mr-2">Libellé: </label>
+        <input type="text" class="form-control" placeholder="Développement Web" name="name" [(ngModel)]="course.name" required>
+      </div>
+
+      <div class="form-group mr-3">
+        <label class="mr-2">Professeur: </label>
+        <input type="text" class="form-control" placeholder="Michel Buffa" name="professeur" [(ngModel)]="course.professeur" required>
+      </div>
+      <div class="form-group mr-3">
+        <label class="mr-2">Avatar: </label>
+        <input  (change)="fileChange($event)" type="file" name="avatar" accept="image/x-png,image/gif,image/jpeg" >
+      </div>
+      <div class="form-group mr-3">
+        <label class="mr-2">Semestre: </label>
+        <select class="form-control" name="semestre"  [(ngModel)]="course.semestre" required>
+          <option>Semestre 1</option>
+          <option>Semestre 2</option>
+        </select>
+      </div>
+      <div class="form-group mr-3">
+        <input type="submit"  class="btn btn-success"  value = "Ajouter" (click)="upload()" />
+        <a class="btn btn-primary ml-4" href="/classes/{{classe.id}}">Finaliser</a>
+      </div>
+  </form>
+
+  <hr style="" *ngIf="coursesAded.length != 0">
+
+  <div style="margin: 26px;" *ngIf="coursesAded.length != 0">
+    <div class="subtitle-courses">
+      Les cours ajoutés :
+    </div>
+    <div class = "addedcourses-container">
+    <div *ngFor = "let addedcourse of coursesAded" class="addedCourse">
+      <div>
+        <div  style="background-image: url('http://localhost:8010/static/{{addedcourse.avatar}}');" class="avatar"></div>
+        <div class="addedCourse-info">
+          <div>{{addedcourse.name}}</div>
+          <div><b>Proffeseur : </b>{{addedcourse.professeur}}</div>
+          <div>{{addedcourse.semestre}}</div>
+        </div>
+      </div>
+      <div class="delete-div">
+        <span (click) = "delete(addedcourse)">Supprimer</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
