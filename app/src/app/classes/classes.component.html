@@ -1,0 +1,16 @@
+<div class="classes-container">
+  <div *ngFor="let classe of classes" class="classe-card">
+    <div class="classe-title">
+      <div>
+        <span class="classe-name"  (click)="openInfo(classe)">{{classe.name}}</span>
+        <span class="classe-promo"> - {{classe.promo}} </span>
+      </div>
+      <div class="classe-action">
+        <label class="delete action" (click)="openModal(classe)"><fa-icon class="classe-icon" [icon]="faTrashAlt"></fa-icon></label>
+        <label class="plus-info action" (click)="openInfo(classe)">Plus d'informations</label>
+      </div>
+    </div>
+    <div class="classe-informations">Nombre d'etudiants : {{classe.etudiants.length}}</div>
+  </div>
+</div>
+
