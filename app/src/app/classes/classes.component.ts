@@ -38,12 +38,15 @@ export class ClassesComponent implements OnInit {
   }
 
   openModal(classe) {
-    //this._modalService.open(content)
     const modal = this._modalService.open(NgbdModalConfirm)
     modal.componentInstance.classe = classe
     modal.componentInstance.deleteEvent.subscribe(i => {
       this.ngOnInit()
     })
+  }
+
+  openCourses(classe) {
+    this.router.navigate(["/courses", classe.id])
   }
 
 }

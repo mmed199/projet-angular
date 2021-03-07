@@ -69,3 +69,12 @@
   padding: 20px;
 }
 
+.add-course {
+  background-color: #5a869c;
+  color: white;
+}
+
+.add-course:hover{
+  background-color: #4b7285;
+  color: white;
+}
