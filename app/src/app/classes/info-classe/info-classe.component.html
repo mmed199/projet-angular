@@ -79,7 +79,7 @@
         <div>Note : {{etudiant.note ? etudiant.note : "/"}}</div>
         <div>
           <span (click)="rendu(index, indexSelectedAssignement, true, note)" *ngIf="!etudiant.rendu" class="rendre">Rendre</span>
-          <span (click)="rendu(index, indexSelectedAssignement, false, null)" *ngIf="etudiant.rendu && etudiant.rendu == true" class="enlever">Enlever</span>
+          <span (click)="rendu(index, indexSelectedAssignement, false, null)" *ngIf="etudiant.rendu != null && etudiant.rendu == true" class="enlever">Enlever</span>
           <a href="mailto:{{etudiant.email}}" class="mailto">Email</a>
         </div>
       </div>
