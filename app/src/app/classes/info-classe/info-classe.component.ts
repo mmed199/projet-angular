@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Classe } from '../class.model';
 import { faGraduationCap, faChevronRight, faPlus, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import { ClassesService } from 'src/app/shared/services/classes.service';
@@ -7,6 +7,8 @@ import { Course } from 'src/app/courses/course.model';
 import { CoursesService } from 'src/app/shared/services/courses.service';
 import { Assignement } from 'src/app/courses/assignement.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { Route } from '@angular/compiler/src/core';
 
 
 @Component({
@@ -34,8 +36,10 @@ export class InfoClasseComponent implements OnInit {
   constructor(
     private classesService: ClassesService,
     private coursesService: CoursesService,
+    private router: Router,
     private route: ActivatedRoute,
-    private modalService: NgbModal) {}
+    private modalService: NgbModal,
+    private authService: AuthService) {}
 
   ngOnInit(): void {
     const id:String = this.route.snapshot.params.id
@@ -149,6 +153,15 @@ export class InfoClasseComponent implements OnInit {
       this.selectedCourse.assignments[indexA].etudiants[index].rendu = value
       this.updateCourse()
     }
+  }
+
+
+  openCourses() {
+    this.router.navigate(["/courses", this.classe.id])
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin()
   }
 }
 

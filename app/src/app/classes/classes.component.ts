@@ -4,6 +4,7 @@ import { Classe } from './class.model';
 import { faTrashAlt} from '@fortawesome/free-solid-svg-icons';
 import { NgbActiveModal, NgbModal  } from '@ng-bootstrap/ng-bootstrap';
 import { ClassesService } from '../shared/services/classes.service';
+import { AuthService } from '../shared/services/auth.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class ClassesComponent implements OnInit {
   constructor(
     private classesService: ClassesService,
     private router:Router,
-    private _modalService: NgbModal
+    private _modalService: NgbModal,
+    private authService: AuthService
     ) { }
 
   ngOnInit(): void {
@@ -47,6 +49,10 @@ export class ClassesComponent implements OnInit {
 
   openCourses(classe) {
     this.router.navigate(["/courses", classe.id])
+  }
+
+  isAdmin() {
+    return this.authService.isAdmin()
   }
 
 }

@@ -10,8 +10,11 @@
 
 <div class="container-info">
   <div>
-    <div class="labels">
-      COURS:
+    <div class="section-header">
+      <div class="labels">COURS:</div>
+      <div>
+        <span *ngIf="isAdmin()" (click)="openCourses()"><fa-icon class="add-icon" [icon]="faPlus"></fa-icon></span>
+      </div>
     </div>
     <div *ngFor = "let course of courses" class="course">
       <div>
@@ -34,7 +37,7 @@
     <div class="section-header">
       <div class="labels">DEVOIRS:</div>
       <div>
-        <span (click)="open(content)"><fa-icon class="add-icon" [icon]="faPlus"></fa-icon></span>
+        <span *ngIf="isAdmin()" (click)="open(content)"><fa-icon class="add-icon" [icon]="faPlus"></fa-icon></span>
       </div>
     </div>
     <div *ngIf="!assignementsExist()" class="no-assignments">
@@ -51,7 +54,7 @@
           <div class="list-badge">
             <span [class.redEffect] = "betweenDates(assignementA.dateDeRendu) <= 7 ">Date de rendu: {{assignementA.dateDeRendu | date:"dd/MM/yyyy"}}</span>
           </div>
-          <div style="margin: 10px 0px;">
+          <div style="margin: 10px 0px;" *ngIf="isAdmin()">
             <span class="enlever" (click) = "deleteAssignment(index)">Supprimer</span>
             <span class="mailto"(click) = "assignement = assignementA; open(content)" >Editer</span>
           </div>

@@ -11,6 +11,12 @@ export class AppComponent {
   constructor(private authService:AuthService,
               private router:Router) {}
 
-  titre = 'Application de gestion des Assignments';
 
+  logOut() {
+    this.authService.logOut()
+  }
+
+  logedIn() {
+    return this.authService.loggedIn()
+  }
 }

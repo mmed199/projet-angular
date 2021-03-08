@@ -7,9 +7,8 @@ import { User } from '../user.model';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn:boolean = false;
-  user:User
-  token:string = ""
+  public user:User
+  public token:string = ""
 
   uri = "http://localhost:8010/api/auth/"
 
@@ -20,8 +19,6 @@ export class AuthService {
   }
 
   me():Observable<any> {
-
-
     return this.http.get(this.uri + "me", {
       headers: {
         "x-access-token" : `${this.token}`
@@ -29,15 +26,26 @@ export class AuthService {
     })
   }
 
-  logOut() {
-    this.loggedIn = false;
+  saveUser() {
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
   }
 
-  isAdmin():Promise<any> {
-    const isUserAdmin = new Promise((resolve, reject) => {
-      resolve(this.loggedIn);
-    });
+  getUser() {
+    this.user = JSON.parse(localStorage.getItem('currentUser'))
+  }
 
-    return isUserAdmin;
+  logOut() {
+    this.user = null
+    localStorage.removeItem('currentUser');
+  }
+
+  loggedIn():boolean {
+    this.getUser()
+    return this.user ? true : false
+  }
+
+  isAdmin() {
+    this.getUser()
+    return this.user != null && this.user.role == "admin";
   }
 }

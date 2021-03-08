@@ -6,6 +6,30 @@
   display: flex;
 }
 
+.classe-add {
+  margin-left: auto;
+  margin-right: 20px;
+  align-self: center;
+}
+
+.classe-add a {
+  font-size: 18px;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #13aa52;
+  border-radius: 8px;
+  margin-right: 10px;
+}
+
+
+.classe-add a:hover {
+  text-decoration: none;
+  background-color: #158242;
+}
+
+
+
 .classe-name {
   font-size: 26px;
   font-weight: 700;

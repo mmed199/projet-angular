@@ -26,7 +26,6 @@ import { NgxMaskModule} from 'ngx-mask';
 import { InfoClasseComponent } from './classes/info-classe/info-classe.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddCoursesComponent } from './courses/add-courses/add-courses.component';
-import { CoursesComponent } from './courses/courses.component';
 import { AddClasseComponent } from './classes/add-classe/add-classe.component';
 import { DndDirective } from './classes/add-classe/dnd.directive';
 import { LoginComponent } from './auth/login/login.component';
@@ -46,7 +45,10 @@ const routes:Routes = [
   },
   {
     path: "classes/add",
-    component : AddClasseComponent
+    component : AddClasseComponent,
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: "classes/:id",
@@ -54,7 +56,10 @@ const routes:Routes = [
   },
   {
     path: "courses/:id",
-    component: AddCoursesComponent
+    component: AddCoursesComponent,
+    canActivate: [
+      AuthGuard
+    ]
   },
   {
     path: "login",
@@ -72,7 +77,6 @@ const routes:Routes = [
     DndDirective,
     InfoClasseComponent,
     AddCoursesComponent,
-    CoursesComponent,
     AddCoursesComponent,
     LoginComponent,
   ],

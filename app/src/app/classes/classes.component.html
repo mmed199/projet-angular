@@ -6,8 +6,8 @@
         <span class="classe-promo"> - {{classe.promo}} </span>
       </div>
       <div class="classe-action">
-        <label class="delete action" (click)="openModal(classe)"><fa-icon class="classe-icon" [icon]="faTrashAlt"></fa-icon></label>
-        <label class="add-course action" (click)="openCourses(classe)">Ajouter des cours</label>
+        <label class="delete action" *ngIf = "isAdmin()"  (click)="openModal(classe)"><fa-icon class="classe-icon" [icon]="faTrashAlt"></fa-icon></label>
+        <label class="add-course action" *ngIf = "isAdmin()" (click)="openCourses(classe)">Ajouter des cours</label>
         <label class="plus-info action" (click)="openInfo(classe)">Plus d'informations</label>
       </div>
     </div>
