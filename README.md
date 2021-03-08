@@ -2,7 +2,7 @@
 
 ### Lien
 Server : 
-https://assignments-service.herokuapp.com/api/classes
+https://assignments-service.herokuapp.com/api/classes <br />
 Client :
 https://assignments-client.herokuapp.com
 
@@ -14,5 +14,5 @@ https://assignments-client.herokuapp.com
 * Un utilisateur normal peut toujours noter les devoirs des etudiants
 
 ### Compte:
-**email** : admin@admin.com
+**email** : admin@admin.com <br />
 **password** : admin
