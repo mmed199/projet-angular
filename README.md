@@ -12,6 +12,7 @@ https://assignments-client.herokuapp.com
 * On peut ajouté une liste d'etudiants par passé un fichier .csv **deux fichiers exemples sont dans la racine du projet**
 * Seulement l'admin peut modifié et ajouté les classes et les cours
 * Un utilisateur normal peut toujours noter les devoirs des etudiants
+* Le login est geré par des JWT (token, et hachage de mdp)
 
 ### Compte:
 **email** : admin@admin.com <br />
